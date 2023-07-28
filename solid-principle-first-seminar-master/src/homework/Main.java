@@ -1,19 +1,23 @@
 package homework;
 
-import homework.Model.ReportUser;
-import homework.Model.Updater;
-import homework.Model.User;
+import homework.Reporting.UserReporter;
+import homework.Saving.UserSaver;
+import homework.User.User;
 
 public class Main{
     public static void main(String[] args){
-        User user = new User("Bob");
-        System.out.println(user);
+        UserSaver usSaver = new UserSaver();
+        UserReporter usReporter=new UserReporter();
 
-        Updater updater = new Updater();
-        user = updater.update(user,"Is no Bob");
-        System.out.println(user);
+        User user  = new User(1l,"Bob");
+        User user1 = new User(2L,"Tom");
+        System.out.println();
+        
+        usSaver.saveUser(user);
+        usSaver.saveUser(user1);
+        System.out.println();
 
-        ReportUser report = new ReportUser(user);
-        report.report();
+        usReporter.reportUser(user);
+        usReporter.reportUser(user1);
     }
 }
